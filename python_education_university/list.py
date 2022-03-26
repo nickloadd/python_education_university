@@ -52,3 +52,5 @@ for i in range(1, k):
     # j.append(l[i])
 # j.reverse()
 print(j)
+
+#This some changes for my project
