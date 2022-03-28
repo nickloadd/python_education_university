@@ -2,6 +2,7 @@ f = open('C:/Users/admin/PycharmProjects/repos/task_file.txt') #read info from f
 s = []
 q = []
 list = []
+valid_list = []
 work_list = []
 for line in f: #parsing file in new list
     z = []
@@ -11,6 +12,7 @@ for line in f: #parsing file in new list
     list.append(z)
 #list.pop(0)
 #print(list)
+f.close()
 
 for i in list[1:]: #loop for get list of value without empty field and wrong phone number
     for k in range(1,5):
@@ -19,6 +21,7 @@ for i in list[1:]: #loop for get list of value without empty field and wrong pho
             list.remove(i)
             break
         else:
+            #valid_list.append(i)
             continue
 #print(list)
 
@@ -38,5 +41,19 @@ def email_gen(list_of_names): # function generation email address for valid list
         emails.append(i[1] + '.' + i[0][0:letter] + '@company.io')
     return emails
 
+#print(email_gen(q))
 
-print(email_gen(q))
+c = 0
+for y in list[1:]: # loop to paste email in result list
+    y[0] = email_gen(q)[c]
+    c = c + 1
+
+print(list)
+
+w = open('C:/Users/admin/PycharmProjects/repos/task.txt', 'w') #open for write to file
+
+for line in list: # loop-write to file
+    #print(",".join(line))
+    w.write(",".join(line))
+
+w.close()
